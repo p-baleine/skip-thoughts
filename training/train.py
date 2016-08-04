@@ -37,8 +37,10 @@ def trainer(X,
             maxlen_w=30,
             optimizer='adam',
             batch_size = 64,
-            saveto='/u/rkiros/research/semhash/models/toy.npz',
-            dictionary='/ais/gobi3/u/rkiros/bookgen/book_dictionary_large.pkl',
+            # saveto='/u/rkiros/research/semhash/models/toy.npz',
+            # dictionary='/ais/gobi3/u/rkiros/bookgen/book_dictionary_large.pkl',
+            saveto='../../data/ikehaya.npz',
+            dictionary='../../data/ikehaya_dictionary.pkl',
             saveFreq=1000,
             reload_=False):
 

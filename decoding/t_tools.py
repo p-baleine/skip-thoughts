@@ -16,15 +16,12 @@ from scipy.linalg import norm
 from gensim.models import Word2Vec as word2vec
 from sklearn.linear_model import LinearRegression
 
-from utils import load_params, init_tparams
-from model import init_params, build_encoder, build_encoder_w2v
+from t_utils import load_params, init_tparams
+from t_model import init_params, build_encoder, build_encoder_w2v
 
 #-----------------------------------------------------------------------------#
 # Specify model and dictionary locations here
 #-----------------------------------------------------------------------------#
-# path_to_model = '/u/rkiros/research/semhash/models/toy.npz'
-# path_to_dictionary = '/ais/gobi3/u/rkiros/bookgen/book_dictionary_large.pkl'
-# path_to_word2vec = '/ais/gobi3/u/rkiros/word2vec/GoogleNews-vectors-negative300.bin'
 path_to_model = '../../data/ikehaya.npz'
 path_to_dictionary = '../../data/ikehaya_dictionary.pkl'
 path_to_word2vec = '../../data/jawiki.20150602.neologd.bin'
@@ -90,7 +87,7 @@ def encode(model, X, use_norm=True, verbose=True, batch_size=128, use_eos=False)
     Encode sentences in the list X. Each entry will return a vector
     """
     # first, do preprocessing
-    # X = preprocess(X) already sentence tokenized by MeCab
+    # X = preprocess(X)
 
     # word dictionary and init
     d = defaultdict(lambda : 0)
@@ -144,7 +141,8 @@ def preprocess(text):
     X = []
     sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
     for t in text:
-        sents = sent_detector.tokenize(t)
+        #sents = sent_detector.tokenize(t)
+        sents = t
         result = ''
         for s in sents:
             tokens = word_tokenize(s)
